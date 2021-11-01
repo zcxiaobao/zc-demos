@@ -1,0 +1,533 @@
+html,
+head,
+body,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  /* background-color: #0f1b31; */
+  background-image: url("./stars.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rockets {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  bottom: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 2s ease;
+  animation: float 2s ease infinite alternate;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* 火箭发射样式 */
+.rockets.launch {
+  bottom: 120%;
+  animation: launch 3s ease;
+}
+
+@keyframes launch {
+  0% {
+    bottom: 130px;
+    transform: translatex(2px);
+  }
+  10% {
+    transform: translatex(-2px);
+  }
+  20% {
+    transform: translatex(2px);
+  }
+  30% {
+    transform: translatex(-2px);
+  }
+  60% {
+    transform: translatex(0px);
+    bottom: 150px;
+  }
+  100% {
+    bottom: 120%;
+  }
+}
+
+/* 火箭着陆 */
+.rockets.land {
+  bottom: 130px;
+  animation: land 3s ease;
+}
+
+@keyframes land {
+  0% {
+    bottom: 120%;
+  }
+  50% {
+    bottom: 180px;
+  }
+  100% {
+    bottom: 130px;
+  }
+}
+
+/********** 火箭身体部分 *********/
+.rockets-body {
+  width: 35%;
+  height: 80%;
+  background-color: white;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: inset 0px -173px 0px -80px white,
+    inset 0px -213px 0px -60px #e4e4e4;
+}
+
+.rockets-body:before {
+  content: "";
+  position: absolute;
+  width: calc(100% - 36px);
+  height: 42%;
+  background-color: inherit;
+  bottom: -30px;
+  transform: perspective(10em) rotateX(-50deg);
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  box-shadow: inset 0px -33px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.rockets-body:after {
+  content: "";
+  position: absolute;
+  width: 45%;
+  height: 40px;
+  background-color: #f95959;
+  bottom: -20px;
+  transform: perspective(10em) rotateX(-50deg);
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  z-index: -1;
+}
+
+/*********** 火箭的窗口 ***********/
+.rockets-windows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+}
+
+.rockets-windows span {
+  background-color: #ace7ef;
+  box-shadow: inset -4px 4px 0px 0px rgba(0, 0, 0, 0.3),
+    inset 0px 0px 0px 2px white;
+  border: 4px solid #f95959;
+  z-index: 2;
+  position: absolute;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.rockets-windows span:before {
+  position: absolute;
+  content: "";
+  background-color: white;
+  width: 200%;
+  height: 100%;
+  transform: rotate(45deg);
+  opacity: 0.4;
+}
+
+.rockets-windows span:nth-child(1) {
+  width: 30px;
+  height: 30px;
+  top: 23%;
+}
+
+.rockets-windows span:nth-child(1):before {
+  top: 10px;
+  right: 0px;
+}
+
+.rockets-windows span:nth-child(2) {
+  width: 45px;
+  height: 45px;
+  top: 40%;
+}
+.hongqi {
+  width: 30px;
+  height: 20px;
+  background-image: url(./hongqi2.jpeg);
+  position: absolute;
+  background-size: cover;
+  bottom: 92px;
+  z-index: 1;
+  box-shadow: 0px 0px 0px 1px #e4e4e4;
+}
+
+.rockets-windows span:nth-child(2):before {
+  top: 12px;
+  right: 0px;
+}
+
+/************* 火箭的底部部分 *************/
+.rockets-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+}
+
+.rockets-bottom span {
+  background-color: #4ba3b7;
+  border-radius: 10px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.rockets-bottom span:before {
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 2px;
+  height: 120%;
+  border-radius: 20px;
+}
+
+.rockets-bottom span:nth-child(1) {
+  width: 15px;
+  height: 80px;
+  z-index: 2;
+  bottom: 2%;
+  box-shadow: inset -5px -3px 0px 0px rgba(0, 0, 0, 0.18);
+}
+
+.rockets-bottom span:nth-child(1):before {
+  display: none;
+}
+
+.rockets-bottom span:nth-child(2) {
+  width: 50px;
+  height: 130px;
+  left: 32%;
+  bottom: 6%;
+  transform: perspective(10em) rotateX(60deg) translateZ(-1px);
+  box-shadow: inset -5px -3px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+.rockets-bottom span:nth-child(2):before {
+  left: 0px;
+  border-right: 2px solid #f95959;
+}
+
+.rockets-bottom span:nth-child(3) {
+  width: 50px;
+  height: 130px;
+  right: 32%;
+  bottom: 6%;
+  transform: perspective(10em) rotateX(60deg) translateZ(-1px);
+  box-shadow: inset -5px -3px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+.rockets-bottom span:nth-child(3):before {
+  right: 0px;
+  border-left: 2px solid #f95959;
+}
+
+/* 飞船的点火部分 */
+.fire {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  bottom: -50px;
+}
+
+.fire.burn span {
+  border-radius: 50px;
+  top: 0;
+  position: absolute;
+  background-color: #ffd460;
+  height: inherit;
+  animation: fire 0.8s ease infinite alternate;
+}
+
+.fire.burn span:nth-child(1) {
+  width: 6px;
+  height: 40px;
+  left: 44%;
+  transform: translateY(27px);
+  box-shadow: inset 0px -7px 10px #ea5455, inset 0px -19px 10px #ffc175,
+    0px -7px 10px #ea5455;
+  animation-delay: 0.2s;
+}
+
+.fire.burn span:nth-child(1):after {
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 60%;
+  border-radius: 50px;
+  background-color: #ffd460;
+  bottom: 0;
+  transform: translate(8px, 15px);
+  box-shadow: inset 0px -5px 10px #ea5455, inset 0px -19px 10px #ffc175,
+    0px -7px 10px #ea5455;
+}
+
+.fire.burn span:nth-child(2) {
+  width: 10px;
+  height: 60px;
+  left: calc(50% - 8px);
+  transform: translateY(35px);
+  box-shadow: inset 0px -10px 10px #ea5455, inset 0px -30px 10px #ffc175,
+    0px -7px 10px #ea5455;
+}
+
+.fire.burn span:nth-child(2):after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #ffd460;
+  top: 0;
+  transform: translate(-6px, -25px);
+  box-shadow: inset 0px -5px 10px #ea5455, inset 0px -15px 10px #ffc175,
+    0px -7px 10px #ea5455;
+}
+
+.fire.burn span:nth-child(3) {
+  width: 10px;
+  height: 40px;
+  right: 45%;
+  transform: translateY(27px);
+  box-shadow: inset 0px -5px 10px #ea5455, inset 0px -30px 10px #ffc175,
+    0px -7px 10px #ea5455;
+  animation-delay: 0.4s;
+}
+
+.fire.burn span:nth-child(3):after {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 180%;
+  border-radius: 10px;
+  background-color: #ffd460;
+  top: 0;
+  transform: translate(-6px, -15px);
+  box-shadow: inset 0px -5px 10px #ea5455, inset 0px -20px 10px #ffc175,
+    0px -7px 10px #ea5455;
+}
+
+@keyframes fire {
+  0% {
+    height: 10px;
+    bottom: 0;
+    /* 50% {
+      top: 0;
+    }
+    100% {
+      height: 20px;
+      bottom: 0;
+    } */
+  }
+}
+
+.fire.burn > .glow {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-radius: 100%;
+  box-shadow: 0px 0px 50px 20px #ea5455;
+  opacity: 1;
+  animation: glow 0.8s ease infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0px 0px 50px 20px #ea5455;
+  }
+
+  100% {
+    box-shadow: 0px 0px 50px 25px #ea5455;
+  }
+}
+
+/************* 阴影部分 ***********/
+.shadow {
+  width: 150px;
+  height: 30px;
+  background-color: black;
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.2;
+  bottom: 80px;
+  z-index: -1;
+  animation: shadow 2s ease infinite alternate;
+  transition: all 0.5s ease;
+}
+
+@keyframes shadow {
+  0% {
+    width: 150px;
+  }
+
+  100% {
+    width: 120px;
+  }
+}
+
+/************ 按钮部分 *************/
+.buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  top: 20px;
+  left: 20px;
+}
+.buttons button {
+  width: 100px;
+  height: 40px;
+  background-color: #4ba3b7;
+  border: 0;
+  margin: 8px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.buttons button.active {
+  background-color: #f95959;
+}
+.buttons button.active:hover {
+  letter-spacing: 1px;
+  color: white;
+  background-color: #bf4c4c;
+}
+.buttons button.active:hover:before,
+.buttons button.active:hover:after {
+  width: 0;
+}
+.buttons button.active:hover span:before,
+.buttons button.active:hover span:after {
+  height: 0;
+}
+.buttons button.disable {
+  background-color: grey;
+  opacity: 0.3;
+  cursor: auto;
+}
+.buttons button.disable:hover {
+  letter-spacing: 1px;
+  color: white;
+}
+.buttons button.disable:hover:before,
+.buttons button.disable:hover:after {
+  width: 0;
+}
+.buttons button.disable:hover span:before,
+.buttons button.disable:hover span:after {
+  height: 0;
+}
+.buttons button:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #ace7ef;
+  transition: all 0.4s ease;
+  left: 0;
+  top: 0;
+}
+.buttons button:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #ace7ef;
+  transition: all 0.4s 0.2s ease;
+  right: 0;
+  bottom: 0;
+}
+.buttons button span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttons button span:before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 0;
+  background-color: #ace7ef;
+  transition: all 0.4s 0.3s ease;
+  left: 0;
+  top: 0;
+}
+.buttons button span:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 0;
+  background-color: #ace7ef;
+  transition: all 0.4s 0.4s ease;
+  right: 0;
+  bottom: 0;
+}
+.buttons button:hover {
+  color: #ace7ef;
+  letter-spacing: 2px;
+}
+.buttons button:hover:before,
+.buttons button:hover:after {
+  width: 100%;
+}
+.buttons button:hover span:before,
+.buttons button:hover span:after {
+  height: 100%;
+}
+.buttons button:active {
+  outline: none;
+  border: none;
+}
+.buttons button:focus {
+  outline: 0;
+}
