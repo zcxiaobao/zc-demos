@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文字粒子效果</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        background-color: #000;
+      }
+      #container {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <canvas id="canvas" style="border: 1px solid gray"></canvas>
+    </div>
+    <input type="text" />
+    <script>
+      // 全局配置
+      const options = {
+        width: 400,
+        height: 400,
+        speed: 10,
+      };
+      // 副画布文字配置
+      const textOptions = {
+        words: "战场小包",
+        font: "200px fangsong",
+      };
+
+      // 绘制主画布
+      function pointCanvas(canvas, { width, height }) {
+        canvas.width = width;
+        canvas.height = height;
+        ctx = canvas.getContext("2d");
+        return ctx;
+      }
+      // 创建副画布
+      function createVitualCvs({ width, height }) {
+        const vitualCvs = document.createElement("canvas");
+        vitualCvs.width = width;
+        vitualCvs.height = height;
+        let vitualCtx = vitualCvs.getContext("2d");
+        initCanvas(vitualCtx, options, textOptions);
+        return getWordPxInfo(vitualCtx, options);
+      }
+      // 初始化副画布，并绘制文字
+      function initCanvas(ctx, { width, height }, { font, words }) {
+        ctx.font = font;
+        const measure = ctx.measureText(words);
+        ctx.fillText(words, (width - measure.width) / 2, height / 2);
+      }
+      // 获取文字像素信息，并生成粒子
+      function getWordPxInfo(ctx, { width, height, speed }) {
+        let imageData = ctx.getImageData(0, 0, width, height).data;
+        const particles = [];
+        for (let x = 0; x < width; x += 4) {
+          for (let y = 0; y < height; y += 4) {
+            // 判断当前像素点是否有文字
+            const pxAlphaIndex = (x + y * width) * 4 + 3;
+            if (imageData[pxAlphaIndex] > 0) {
+              particles.push(
+                new Particle({
+                  x,
+                  y,
+                  speed,
+                })
+              );
+            }
+          }
+        }
+        return particles;
+      }
+      // 入口方法
+      function init(points, { width, height }) {
+        ctx.clearRect(0, 0, width, height);
+        points.forEach((value) => {
+          value.draw();
+        });
+        const timer = window.requestAnimationFrame(function () {
+          init(points, options);
+        });
+      }
+      // 粒子类
+      class Particle {
+        constructor(point) {
+          this.x = point.x; // 记录点位最终应该停留在的x轴位置
+          this.y = point.y; // 记录点位最终应该停留在的y轴位置
+          this.mx = Math.random() * canvas.width;
+          this.my = Math.random() * canvas.height;
+          this.radius = Math.random() * 3;
+          this.speed = Math.random() * 40 + point.speed;
+          this.color = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${
+            Math.random() * 255
+          },${Math.random() + 0.2})`;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.fillStyle = this.color;
+          ctx.arc(this.mx, this.my, this.radius, 0, Math.PI * 2, false);
+          ctx.fill();
+          this.update();
+        }
+        // 可以使用更复杂的贝塞尔曲线
+        update() {
+          this.mx = this.mx + (this.x - this.mx) / this.speed;
+          this.my = this.my + (this.y - this.my) / this.speed;
+        }
+      }
+
+      window.onload = () => {
+        options.width = document.body.clientWidth;
+        options.height = document.body.clientHeight;
+        const canvas = document.getElementById("canvas");
+        pointCanvas(canvas, options);
+        const points = createVitualCvs(options);
+        init(points, options);
+      };
+    </script>
+  </body>
+</html>
