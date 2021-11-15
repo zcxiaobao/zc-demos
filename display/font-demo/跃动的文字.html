@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跃动的文字</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Baloo+Bhaijaan&display=swap");
+      body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: #2980b9;
+      }
+
+      .loading {
+        display: flex;
+        color: white;
+        font-size: 5em;
+        font-family: "Baloo Bhaijaan", cursive;
+        text-transform: uppercase;
+      }
+      .loading span {
+        text-shadow: 0 1px #bbb, 0 2px #bbb, 0 3px #bbb, 0 4px #bbb, 0 5px #bbb,
+          0 6px transparent, 0 7px transparent, 0 8px transparent,
+          0 9px transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
+        transform: translateY(20px);
+        animation: bounce 0.3s ease infinite alternate;
+      }
+
+      @keyframes bounce {
+        to {
+          text-shadow: 0 1px #bbb, 0 2px #bbb, 0 3px #bbb, 0 4px #bbb,
+            0 5px #bbb, 0 6px #bbb, 0 7px #bbb, 0 8px #bbb, 0 9px #bbb,
+            0 50px 25px rgba(0, 0, 0, 0.2);
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading">战场小包</div>
+    <script>
+      let loading = document.querySelector(".loading");
+      let letters = loading.textContent.split("");
+      loading.textContent = "";
+      letters.forEach((letter, i) => {
+        let span = document.createElement("span");
+        span.textContent = letter;
+        span.style.animationDelay = `${i / 10}s`;
+        loading.append(span);
+      });
+    </script>
+  </body>
+</html>

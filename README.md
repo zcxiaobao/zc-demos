@@ -12,3 +12,5 @@
 - [x] 文字粒子效果
 - [x] `background-clip:text` 实现 `hover` 文字填充效果
 ![](./images/clip1.gif)
+- [x] 跃动的文字
+![](./images/zcxiaobao3.gif)
