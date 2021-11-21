@@ -7,7 +7,8 @@
 ## display
 > 存放一些比较好的实现效果
 - [x] rockets launch: (缅怀两弹元勋钱老)火箭发射
-
+- [x] 自由飞翔的小鸟
+  ![](./images/flybird.gif)
 ### font(文字效果)
 - [x] 文字粒子效果
 - [x] `background-clip:text` 实现 `hover` 文字填充效果
