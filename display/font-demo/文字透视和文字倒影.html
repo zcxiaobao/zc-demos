@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      a {
+        display: block;
+        padding: 4px 0;
+        font-size: 100px;
+        text-decoration: none;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #7e40ee, #00f, #63d9ee);
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: gradient-text 0.5s linear infinite;
+      }
+      span {
+        display: block;
+        font-size: 100px;
+        color: rgb(237, 125, 49);
+        -webkit-box-reflect: below -2px -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            from(rgba(0, 0, 0, 0)),
+            to(rgba(255, 255, 255, 0.2))
+          );
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="#">home</a>
+      <span>ABC</span>
+    </div>
+  </body>
+</html>
