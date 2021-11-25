@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>border-radius实现不规则圆角头像</title>
+    <style>
+      .radius {
+        width: 150px;
+        height: 150px;
+        border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+        object-fit: cover;
+        object-position: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      <img class="radius" src="../../images/border-radius/6.jpeg" />
+    </div>
+  </body>
+</html>

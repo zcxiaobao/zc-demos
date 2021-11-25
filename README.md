@@ -15,3 +15,6 @@
 ![](./images/clip1.gif)
 - [x] 跃动的文字
 ![](./images/zcxiaobao3.gif)
+
+### border
+- [x] 随机不规则圆角实现

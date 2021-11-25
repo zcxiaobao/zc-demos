@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .demo {
+        width: 920px;
+        margin: 2em auto;
+        text-align: center;
+      }
+      .avatar {
+        margin: 10px;
+        display: inline-block;
+        width: 168px;
+        height: 168px;
+        border: 4px solid #00c7e9;
+        border-radius: 50%;
+        object-fit: cover;
+        animation: morph 6s paused linear;
+        border: solid deepskyblue;
+      }
+      @keyframes morph {
+        0% {
+          border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+          transform: rotate(-5deg);
+        }
+        100% {
+          border-radius: 40% 60%;
+          transform: rotate(5deg);
+        }
+      }
+      .avatar:nth-child(n) {
+        animation-delay: -3.5s;
+      }
+      .avatar:nth-child(2n + 1) {
+        animation-delay: -1s;
+      }
+      .avatar:nth-child(3n + 2) {
+        animation-delay: -2s;
+      }
+
+      .avatar:nth-child(5n + 3) {
+        animation-delay: -3s;
+      }
+      .avatar:nth-child(7n + 5) {
+        animation-delay: -4s;
+      }
+      .avatar:nth-child(11n + 7) {
+        animation-delay: -5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      <img class="avatar" src="../../images/border-radius/1.jpeg" />
+      <img class="avatar" src="../../images/border-radius/2.jpeg" />
+      <img class="avatar" src="../../images/border-radius/9.jpeg" />
+      <img class="avatar" src="../../images/border-radius/4.jpeg" />
+      <img class="avatar" src="../../images/border-radius/5.jpeg" />
+      <img class="avatar" src="../../images/border-radius/7.jpeg" />
+      <img class="avatar" src="../../images/border-radius/10.jpeg" />
+      <img class="avatar" src="../../images/border-radius/11.jpeg" />
+    </div>
+  </body>
+</html>
