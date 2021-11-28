@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* loading.css */
+      .loader {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        width: 175px;
+        height: 100px;
+      }
+      .loader span {
+        display: block;
+        background: #e04960;
+        width: 7px;
+        height: 100%;
+        border-radius: 14px;
+        margin-right: 5px;
+        float: left;
+        animation: load 2.5s infinite linear;
+      }
+      .loader span:last-child {
+        margin-right: 0px;
+      }
+      .loader span:nth-child(1) {
+        animation-delay: -1.1s;
+      }
+      .loader span:nth-child(2) {
+        animation-delay: -1.3s;
+      }
+      .loader span:nth-child(3) {
+        animation-delay: -1.5s;
+      }
+      .loader span:nth-child(4) {
+        animation-delay: -1.7s;
+      }
+      .loader span:nth-child(5) {
+        animation-delay: -1.9s;
+      }
+      .loader span:nth-child(6) {
+        animation-delay: -2.1s;
+      }
+      .loader span:nth-child(7) {
+        animation-delay: -2.3s;
+      }
+      .loader span:nth-child(8) {
+        animation-delay: 0s;
+      }
+      .loader span:nth-child(9) {
+        animation-delay: -2.3s;
+      }
+      .loader span:nth-child(10) {
+        animation-delay: -2.1s;
+      }
+      .loader span:nth-child(11) {
+        animation-delay: -1.9s;
+      }
+      .loader span:nth-child(12) {
+        animation-delay: -1.7s;
+      }
+      .loader span:nth-child(13) {
+        animation-delay: -1.5s;
+      }
+      .loader span:nth-child(14) {
+        animation-delay: -1.3s;
+      }
+      .loader span:nth-child(15) {
+        animation-delay: -1.1s;
+      }
+      @keyframes load {
+        0% {
+          background: #531430;
+          transform: scaleY(0.08);
+        }
+        50% {
+          background: #e04960;
+          transform: scaleY(1);
+        }
+        100% {
+          background: #531430;
+          transform: scaleY(0.08);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </body>
+</html>

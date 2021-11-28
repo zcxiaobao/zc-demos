@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      div {
+        width: 0;
+        height: 0;
+        background-color: #000;
+        animation: extend 5s linear paused infinite;
+        animation-delay: -6s;
+      }
+
+      @keyframes extend {
+        0% {
+          width: 0;
+          height: 0;
+        }
+        100% {
+          width: 500px;
+          height: 500px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1"></div>
+  </body>
+</html>
