@@ -18,3 +18,6 @@
 
 ### border
 - [x] 随机不规则圆角实现
+
+### animation
+- [x] animation-delay 负值实现 loading 效果

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .spinner {
+        position: relative;
+        width: 45px;
+        height: 45px;
+        margin: 0 auto;
+      }
+
+      .bubble-1,
+      .bubble-2 {
+        position: absolute;
+        top: 0;
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        background-color: #4b9cdb;
+      }
+
+      .bubble-2 {
+        top: auto;
+        bottom: 0;
+      }
+
+      .load-9 .spinner {
+        animation: loadingI 2s linear infinite;
+      }
+      .load-9 .bubble-1,
+      .load-9 .bubble-2 {
+        animation: bounce 2s ease-in-out infinite;
+      }
+      .load-9 .bubble-2 {
+        animation-delay: -1s;
+      }
+
+      @keyframes loadingI {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <body>
+      <div class="load-9">
+        <div class="spinner">
+          <div class="bubble-1"></div>
+          <div class="bubble-2"></div>
+        </div>
+      </div>
+    </body>
+  </body>
+</html>
