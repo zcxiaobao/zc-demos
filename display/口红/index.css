@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lipstick {
+  position: relative;
+  background-size: 500px;
+  background-position-x: -150px;
+  background-position-y: -30px;
+  height: 408px;
+  width: 107px;
+  animation: lipstick 3s infinite alternate;
+}
+
+@keyframes lipstick {
+  0% {
+    transform: rotate(0);
+  }
+  10% {
+    transform: rotate(0);
+  }
+  80% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+.base {
+  position: absolute;
+  height: 154px;
+  width: 80px;
+  left: 16px;
+  bottom: 11px;
+  border-bottom-left-radius: 42px 20px;
+  border-bottom-right-radius: 42px 20px;
+  background: radial-gradient(
+      ellipse 216px 154px at 50% 2%,
+      #0c1717 25%,
+      rgba(0, 0, 0, 0) 20%
+    ),
+    linear-gradient(to right, #2d3538 50%, #0d0d0b 79%);
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.base:before {
+  position: absolute;
+  content: "";
+  height: 58px;
+  width: 80px;
+  bottom: 116px;
+  border-radius: 42px / 20px;
+  background: radial-gradient(
+      ellipse 209px 154px at 50% -6%,
+      #d3e6ea 20%,
+      #abc2c9 25%,
+      rgba(0, 0, 0, 0) 26%
+    ),
+    linear-gradient(to right, #cce0e4 50%, #415557 79%);
+}
+
+.base:after {
+  position: absolute;
+  content: "";
+  height: 107px;
+  width: 70px;
+  left: 5px;
+  bottom: 145px;
+  border-radius: 42px / 20px;
+  background: radial-gradient(
+      ellipse 147px 49px at 50% 10%,
+      #766768 12%,
+      #5f686a 21%,
+      rgba(0, 0, 0, 0) 23%
+    ),
+    radial-gradient(
+      ellipse 233px 165px at 50% 1%,
+      #f7fdff 15%,
+      rgba(0, 0, 0, 0) 19%
+    ),
+    linear-gradient(to right, #cce0e4 64%, #415557 88%);
+}
+
+.tip {
+  position: absolute;
+  height: 130px;
+  width: 53px;
+  left: 30px;
+  bottom: 242px;
+  border-radius: 51px / 20px;
+  border-top-left-radius: 59px 141px;
+  border-top-right-radius: 59px 141px;
+  background: radial-gradient(
+      ellipse 105px 181px at 50% 2%,
+      #c10505 22%,
+      rgba(0, 0, 0, 0) 24%
+    ),
+    linear-gradient(to right, #c10505 50%, #9c1515 79%);
+  box-shadow: inset 0px -6px 11px #a00868;
+  animation: tip 3s infinite alternate;
+}
+
+@keyframes tip {
+  0% {
+    height: 0px;
+  }
+  10% {
+    height: 0px;
+  }
+  30% {
+    height: 40px;
+  }
+  80% {
+    height: 130px;
+  }
+  100% {
+    height: 130px;
+  }
+}
+
+.top {
+  position: absolute;
+  height: 154px;
+  width: 80px;
+  left: 16px;
+  bottom: 152px;
+  color: #222b2d;
+  border-radius: 42px / 20px;
+  background: radial-gradient(
+      ellipse 216px 154px at 50% 2%,
+      #222b2d 22%,
+      #0c1717 25%,
+      rgba(0, 0, 0, 0) 20%
+    ),
+    linear-gradient(to right, #2d3538 50%, #0d0d0b 79%);
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+  animation: top 3s infinite alternate;
+}
+
+.top:before {
+  position: absolute;
+  content: "小包";
+  color: #f1fcfe;
+  transform: rotate(-90deg) skew(-10deg) rotateX(30deg);
+  top: 73px;
+  left: 0px;
+  font-size: 30px;
+  font-family: "Kaushan Script", cursive;
+}
+
+@keyframes top {
+  0% {
+    bottom: 152px;
+    transform: rotate(0);
+    left: 16px;
+  }
+  10% {
+    bottom: 152px;
+    transform: rotate(0);
+    left: 16px;
+  }
+  30% {
+    bottom: 240px;
+    transform: rotate(0);
+    left: 16px;
+  }
+  80% {
+    bottom: 400px;
+    transform: rotate(30deg);
+    left: 46px;
+  }
+  100% {
+    bottom: 400px;
+    transform: rotate(30deg);
+    left: 46px;
+  }
+}
+
+/* 第二支口红 */
+.lipstick2 {
+  margin-left: 80px;
+}
+.tip2 {
+  background: radial-gradient(
+      ellipse 105px 181px at 50% 2%,
+      #b02e0c 22%,
+      rgba(0, 0, 0, 0) 24%
+    ),
+    linear-gradient(315deg, #eb4511 0%, #b02e0c 74%);
+
+  box-shadow: inset 0px -6px 11px #a00868;
+}
+
+.base2:after {
+  background: radial-gradient(
+      ellipse 147px 49px at 50% 10%,
+      #766768 12%,
+      #d3e6ea 21%,
+      rgba(0, 0, 0, 0) 23%
+    ),
+    radial-gradient(
+      ellipse 233px 165px at 50% 1%,
+      #f7fdff 15%,
+      rgba(0, 0, 0, 0) 19%
+    ),
+    linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+}
+.base2:before {
+  background: radial-gradient(
+      ellipse 209px 154px at 50% -6%,
+      #d3e6ea 20%,
+      #d7e1ec 25%,
+      rgba(0, 0, 0, 0) 26%
+    ),
+    linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+}

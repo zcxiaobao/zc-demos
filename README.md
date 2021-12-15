@@ -21,3 +21,6 @@
 
 ### animation
 - [x] animation-delay 负值实现 loading 效果
+
+### 酷炫的CSS
+- [x] 绘制口红
