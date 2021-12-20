@@ -11,7 +11,7 @@ class Particle {
     this.r = rand(1, 3);
     this.col = `rgba(${Math.round(rand(150, 200))}, ${Math.round(
       rand(100, 255)
-    )}, ${Math.round(rand(180, 255))},${Math.random() + 0.2})`;
+    )}, ${Math.round(rand(180, 255))},${1})`;
   }
 }
 
