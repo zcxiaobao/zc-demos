@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>可爱麋鹿</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #eee4df;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .reindeer {
+        --rudolph-antler: #ddb892;
+        --rudolph-body: #9d6b53;
+        --rudolph-body-dark: #946651;
+        --rudolph-nose: #8c6351;
+        --rudolph-nose-red: #690500;
+        --rudolph-eye: #432818;
+        --rudolph-ear: #774936;
+        --rudolph-belly: #ede0d4;
+        --rudolph-leg: #432818;
+
+        position: relative;
+        width: 16rem;
+        height: 16rem;
+      }
+
+      .reindeer .antler {
+        position: absolute;
+        margin: 2.7rem 0 0 2.3rem;
+        width: 5rem;
+        height: 0.7rem;
+        border-radius: 0.35rem;
+        background-color: var(--rudolph-antler);
+        transform-origin: 5.7rem 0;
+        transform: translate(-1rem, 2.5rem) rotate(20deg);
+      }
+
+      .reindeer .antler.antler--right {
+        transform: scaleX(-1) translate(-1rem, 2.5rem) rotate(20deg);
+      }
+
+      .reindeer .antler .hook:first-child {
+        position: absolute;
+        top: -2.3rem;
+        left: -2.3rem;
+        width: 3rem;
+        height: 3rem;
+        background: radial-gradient(
+          circle at 100% 0,
+          transparent,
+          transparent 2.3rem,
+          var(--rudolph-antler) 2.3rem,
+          var(--rudolph-antler) 3rem,
+          transparent 3rem
+        );
+      }
+
+      .reindeer .antler .hook:nth-child(2) {
+        position: absolute;
+        top: -1.7rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        background: radial-gradient(
+          circle at 100% 0,
+          transparent,
+          transparent 1.7rem,
+          var(--rudolph-antler) 1.7rem,
+          var(--rudolph-antler) 2.4rem,
+          transparent 2.4rem
+        );
+      }
+
+      .reindeer .antler .hook:nth-child(3) {
+        position: absolute;
+        top: -1.3rem;
+        left: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+        background: radial-gradient(
+          circle at 100% 0,
+          transparent,
+          transparent 1.3rem,
+          var(--rudolph-antler) 1.3rem,
+          var(--rudolph-antler) 2rem,
+          transparent 2rem
+        );
+      }
+
+      .reindeer .antler .hook::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -0.35rem;
+        width: 0.7rem;
+        height: 0.7rem;
+        background-color: var(--rudolph-antler);
+        border-radius: 0.35rem;
+      }
+
+      .reindeer .head {
+        position: absolute;
+        z-index: 3;
+        top: 4rem;
+        left: 5rem;
+        width: 6rem;
+        height: 6rem;
+      }
+
+      .reindeer .head .face {
+        position: absolute;
+        width: 6rem;
+        height: 6rem;
+        background: var(--rudolph-body);
+        border-radius: 50% 50% 50% 50% / 50% 50% 60% 60%;
+      }
+
+      .reindeer .head .face::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0.05rem;
+        left: 0.5rem;
+        width: 5rem;
+        height: 5.4rem;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at center,
+          transparent,
+          transparent 2.5rem,
+          var(--rudolph-body-dark) 2.5rem,
+          var(--rudolph-body-dark) 5rem
+        );
+        background-position: 0 0.2rem;
+        transform: scaleX(1.1) rotate(45deg) scaleX(1.1) scale(0.9);
+      }
+
+      .reindeer .ear {
+        position: absolute;
+        left: -2.6rem;
+        top: 1.5rem;
+        width: 5rem;
+        height: 2rem;
+        background: var(--rudolph-body);
+        border-radius: 50% 50% 60% 40% / 50% 40% 40% 50%;
+        transform: rotate(-10deg) scale(0.8);
+      }
+
+      .reindeer .ear::after {
+        content: "";
+        diplay: block;
+        position: absolute;
+        left: 1rem;
+        top: 0.5rem;
+        width: 3rem;
+        height: 1.2rem;
+        background: var(--rudolph-ear);
+        border-radius: 50% 50% 50% 40% / 50% 40% 60% 50%;
+      }
+
+      .reindeer .ear.ear--right {
+        left: auto;
+        right: -2.6rem;
+        transform: rotate(10deg) scaleX(-1) scale(0.8);
+      }
+
+      .reindeer .eye {
+        position: absolute;
+        top: 2.5rem;
+        left: 2rem;
+        width: 0.6rem;
+        height: 0.8rem;
+        border-radius: 50%;
+        background-color: var(--rudolph-eye);
+        transform: rotate(10deg);
+      }
+
+      .reindeer .eye.eye--right {
+        left: 3.4rem;
+        transform: rotate(-10deg);
+      }
+
+      .reindeer .nose {
+        position: absolute;
+        top: 3.5rem;
+        left: 0.7rem;
+        width: 4.6rem;
+        height: 3.6rem;
+        border-radius: 50%;
+        background-color: var(--rudolph-nose);
+      }
+
+      .reindeer .nose::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0.3rem;
+        left: 0.6rem;
+        width: 3.4rem;
+        height: 2.6rem;
+        border-radius: 50%;
+        background-color: var(--rudolph-nose-red);
+      }
+
+      .reindeer .nose::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0.6rem;
+        left: 1.6rem;
+        width: 1.8rem;
+        height: 1.2rem;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .reindeer .body {
+        position: absolute;
+        top: 9.6rem;
+        left: 5rem;
+        width: 6rem;
+        height: 6rem;
+        background: var(--rudolph-body);
+        border-radius: 3rem 3rem 0 0 / 4rem 4rem 0 0;
+      }
+
+      .reindeer .body::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 3rem;
+        height: 4rem;
+        background-color: var(--rudolph-belly);
+        border-radius: 50%;
+        top: 0rem;
+        left: 1.5rem;
+      }
+
+      .reindeer .hand {
+        position: absolute;
+        z-index: 2;
+        top: 1rem;
+        left: 0.8rem;
+        width: 2rem;
+        height: 2rem;
+        background: radial-gradient(
+          circle at 100% 0,
+          transparent,
+          transparent 1.15rem,
+          var(--rudolph-leg) 1.2rem,
+          var(--rudolph-leg) 2rem,
+          transparent 2.05rem
+        );
+        transform: scaleX(0.7) rotate(10deg);
+      }
+
+      .reindeer .hand::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1.2rem;
+        left: 1.6rem;
+        width: 0.8rem;
+        height: 0.8rem;
+        background-color: var(--rudolph-leg);
+        border-radius: 50%;
+      }
+
+      .reindeer .hand.hand--right {
+        left: 3.2rem;
+        transform: scaleX(-1) scaleX(0.7) rotate(10deg);
+      }
+
+      .reindeer .legs {
+        position: absolute;
+        left: -1rem;
+        top: 2rem;
+        width: 8rem;
+        height: 4rem;
+        overflow: hidden;
+      }
+
+      .reindeer .legs::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1rem;
+        left: 0.3rem;
+        width: 2rem;
+        height: 3.4rem;
+        background-color: var(--rudolph-body);
+        border-radius: 50%;
+        transform: rotate(-20deg);
+      }
+
+      .reindeer .legs::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 0.3rem;
+        width: 2rem;
+        height: 3.4rem;
+        background-color: var(--rudolph-body);
+        border-radius: 50%;
+        transform: rotate(20deg);
+      }
+
+      .reindeer .foot {
+        position: absolute;
+        width: 3rem;
+        height: 1.5rem;
+        background-color: var(--rudolph-leg);
+        border-radius: 1.5rem 1.5rem 0 0;
+        top: 4.5rem;
+      }
+
+      .reindeer .foot.foot--right {
+        left: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reindeer">
+      <div class="antler">
+        <div class="hook"></div>
+        <div class="hook"></div>
+        <div class="hook"></div>
+      </div>
+      <div class="antler antler--right">
+        <div class="hook"></div>
+        <div class="hook"></div>
+        <div class="hook"></div>
+      </div>
+      <div class="body">
+        <div class="hand"></div>
+        <div class="hand hand--right"></div>
+        <div class="legs"></div>
+        <div class="foot"></div>
+        <div class="foot foot--right"></div>
+      </div>
+      <div class="head">
+        <div class="ear"></div>
+        <div class="ear ear--right"></div>
+        <div class="face"></div>
+        <div class="eye"></div>
+        <div class="eye eye--right"></div>
+        <div class="nose"></div>
+      </div>
+    </div>
+  </body>
+</html>

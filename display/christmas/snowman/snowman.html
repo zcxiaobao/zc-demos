@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>可爱的雪人</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #48caff;
+      }
+      .container {
+        width: 700px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+      }
+
+      .snowman {
+        height: 400px;
+        width: 400px;
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%) scale(0.6);
+        -webkit-transform: translateX(-50%) scale(0.6);
+        text-align: center;
+        z-index: 1;
+      }
+
+      .head {
+        background: #fff;
+        width: 170px;
+        height: 150px;
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+      }
+
+      .body {
+        background: #fff;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        margin: -40px auto 0 auto;
+        position: relative;
+      }
+
+      .hat {
+        height: 20px;
+        background: #4e575f;
+        border-radius: 5px;
+        position: absolute;
+        top: 20px;
+        width: 180px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .hat:after {
+        content: "";
+        position: absolute;
+        width: 135px;
+        background: #d95d59;
+        height: 50px;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 8px 8px 0 0;
+      }
+
+      .eyes {
+        width: 70px;
+        margin: 56px auto 0 auto;
+        position: relative;
+      }
+
+      .eyes:before,
+      .eyes:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: #333e48;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .eyes:before {
+        right: 0;
+      }
+
+      .eyes:after {
+        left: 0;
+      }
+
+      .nose {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #ff6d68;
+        margin: 65px auto 0 auto;
+      }
+
+      .lips {
+        font-size: 35px;
+        transform: rotate(-90deg);
+        font-family: monospace;
+        line-height: 26px;
+        margin: 4px 0 0 -4px;
+        font-weight: bolder;
+        color: #333e48;
+      }
+
+      .towel {
+        background: #00a17b;
+        height: 30px;
+        width: 190px;
+        margin: 8px auto;
+        border-radius: 5px;
+        position: relative;
+      }
+
+      .towel .vertical {
+        background: #00a17b;
+        height: 120px;
+        position: absolute;
+        width: 38px;
+        left: 38px;
+        border-radius: 0 0 6px 6px;
+      }
+
+      .towel .vertical:after {
+        content: "";
+        background: #008655;
+        height: 30px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 50px;
+      }
+
+      .towel:after {
+        content: "";
+        background: #008655;
+        position: absolute;
+        width: 40px;
+        height: 100%;
+        left: 37px;
+        box-shadow: 90px 0px 0px 0px #008655;
+      }
+
+      .buttons {
+        width: 20px;
+        height: 20px;
+        background: #333e48;
+        border-radius: 50%;
+        margin: 30px auto 0 auto;
+        box-shadow: 0px 50px 0px 0px #333e48, 0px 100px 0px 0px #333e48;
+      }
+
+      .handsset {
+        margin: 50px auto 0;
+        position: absolute;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .hand {
+        width: 10px;
+        background: #9f6102;
+        height: 90px;
+        position: absolute;
+        bottom: -10px;
+        z-index: -1;
+        transform-origin: bottom;
+        border-radius: 6px;
+      }
+
+      .lefthand {
+        transform: rotate(-35deg);
+        left: 0;
+      }
+
+      .righthand {
+        transform: rotate(35deg);
+        right: 0;
+      }
+
+      .hand:before,
+      .hand:after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        height: 52px;
+        width: 100%;
+        left: 0;
+        transform-origin: bottom;
+        border-radius: 5px;
+      }
+
+      .hand:before {
+        transform: rotate(35deg);
+      }
+
+      .hand:after {
+        transform: rotate(-35deg);
+      }
+
+      .ground {
+        position: absolute;
+        left: 0;
+        right: 0;
+        background: #fff;
+        height: 100px;
+        bottom: 0;
+        min-width: 700px;
+      }
+
+      .snowflake {
+        color: #fff;
+        font-size: 40px;
+        font-family: Arial;
+        z-index: 1;
+      }
+
+      .snowflake:before {
+        content: "*";
+      }
+
+      @-webkit-keyframes snowflakes-fall {
+        0% {
+          top: -10%;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+      @-webkit-keyframes snowflakes-shake {
+        0% {
+          -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+        }
+        50% {
+          -webkit-transform: translateX(80px);
+          transform: translateX(80px);
+        }
+        100% {
+          -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+        }
+      }
+      @keyframes snowflakes-fall {
+        0% {
+          top: -10%;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+      @keyframes snowflakes-shake {
+        0% {
+          transform: translateX(0px);
+        }
+        50% {
+          transform: translateX(80px);
+        }
+        100% {
+          transform: translateX(0px);
+        }
+      }
+      .snowflake {
+        position: fixed;
+        top: -10%;
+        cursor: default;
+        animation-name: snowflakes-fall, snowflakes-shake;
+        animation-duration: 10s, 3s;
+        animation-timing-function: linear, ease-in-out;
+        animation-iteration-count: infinite, infinite;
+        animation-play-state: running, running;
+      }
+      .snowflake:nth-of-type(0) {
+        left: 1%;
+        -webkit-animation-delay: 0s, 0s;
+        animation-delay: 0s, 0s;
+      }
+      .snowflake:nth-of-type(1) {
+        left: 10%;
+        -webkit-animation-delay: 1s, 1s;
+        animation-delay: 1s, 1s;
+      }
+      .snowflake:nth-of-type(2) {
+        left: 20%;
+        -webkit-animation-delay: 6s, 0.5s;
+        animation-delay: 6s, 0.5s;
+      }
+      .snowflake:nth-of-type(3) {
+        left: 30%;
+        -webkit-animation-delay: 4s, 2s;
+        animation-delay: 4s, 2s;
+      }
+      .snowflake:nth-of-type(4) {
+        left: 40%;
+        -webkit-animation-delay: 2s, 2s;
+        animation-delay: 2s, 2s;
+      }
+      .snowflake:nth-of-type(5) {
+        left: 50%;
+        -webkit-animation-delay: 8s, 3s;
+        animation-delay: 8s, 3s;
+      }
+      .snowflake:nth-of-type(6) {
+        left: 60%;
+        -webkit-animation-delay: 6s, 2s;
+        animation-delay: 6s, 2s;
+      }
+      .snowflake:nth-of-type(7) {
+        left: 70%;
+        -webkit-animation-delay: 2.5s, 1s;
+        animation-delay: 2.5s, 1s;
+      }
+      .snowflake:nth-of-type(8) {
+        left: 80%;
+        -webkit-animation-delay: 1s, 0s;
+        animation-delay: 1s, 0s;
+      }
+      .snowflake:nth-of-type(9) {
+        left: 90%;
+        -webkit-animation-delay: 3s, 1.5s;
+        animation-delay: 3s, 1.5s;
+      }
+
+      .tree {
+        text-align: center;
+        width: 220px;
+        position: absolute;
+        left: 20px;
+        transform: scale(0.6);
+        bottom: 30px;
+        z-index: 1;
+      }
+
+      .tree-2 {
+        left: auto;
+        right: 20px;
+        transform: scale(0.8);
+        bottom: 50px;
+      }
+
+      .branch {
+        width: 130px;
+        height: 90px;
+        overflow: hidden;
+        display: inline-block;
+        position: relative;
+        transform: skewX(40deg);
+        z-index: 3;
+        transform-origin: bottom;
+      }
+
+      .branch.second {
+        width: 150px;
+        margin-top: -40px;
+        z-index: 2;
+      }
+
+      .branch.second:after {
+        background: #00b494;
+      }
+
+      .branch.third {
+        width: 180px;
+        margin-top: -40px;
+        z-index: 1;
+      }
+
+      .branch.fourth {
+        width: 200px;
+        margin-top: -40px;
+        z-index: 0;
+      }
+
+      .branch.fourth:after {
+        background: #00b494;
+      }
+
+      .branch:after {
+        left: 0;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #00997c;
+        transform: skewX(-60deg);
+        transform-origin: bottom;
+      }
+
+      .trunk {
+        background: #eac86a;
+        width: 25px;
+        height: 50px;
+        display: inline-block;
+        margin-top: -24px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <i class="snowflake"></i>
+    <i class="snowflake"></i><i class="snowflake"></i><i class="snowflake"></i
+    ><i class="snowflake"></i><i class="snowflake"></i><i class="snowflake"></i
+    ><i class="snowflake"></i><i class="snowflake"></i>
+    <div class="container">
+      <div class="snowman">
+        <div class="head">
+          <div class="hat"></div>
+          <div class="eyes"></div>
+          <div class="nose"></div>
+          <div class="lips">c</div>
+        </div>
+        <div class="body">
+          <div class="towel">
+            <div class="vertical"></div>
+          </div>
+          <div class="handsset">
+            <div class="lefthand hand"></div>
+            <div class="righthand hand"></div>
+          </div>
+          <div class="buttons"></div>
+        </div>
+      </div>
+      <div class="tree">
+        <div class="branch"></div>
+        <div class="branch second"></div>
+        <div class="branch third"></div>
+        <div class="branch fourth"></div>
+        <div class="trunk"></div>
+      </div>
+      <div class="tree tree-2">
+        <div class="branch"></div>
+        <div class="branch second"></div>
+        <div class="branch third"></div>
+        <div class="branch fourth"></div>
+        <div class="trunk"></div>
+      </div>
+    </div>
+    <div class="ground"></div>
+  </body>
+</html>
