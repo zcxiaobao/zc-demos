@@ -13,7 +13,6 @@ class Particle {
     ctx.save();
     ctx.translate(this.x, this.y);
     ctx.fillStyle = this.color;
-    // ctx.fillRect(0, 0, this.radius * 2, this.radius * 2)
     ctx.beginPath();
     ctx.arc(0, 0, this.radius, 0, Math.PI * 2, true);
     ctx.closePath();
@@ -22,6 +21,8 @@ class Particle {
     return this;
   }
 }
+const imageList = [];
+let cnt = 0;
 
 // 传入粒子对象绘制动画帧，并接受一个动画结束的回调
 function drawFrame(particles, finished) {
@@ -49,6 +50,18 @@ function drawFrame(particles, finished) {
       particle.y += vy;
     }
     particle.draw(ctx);
+    // const canvas2 = document.createElement("canvas");
+    // canvas2.width = window.innerWidth * 0.5;
+    // canvas2.height = window.innerHeight * 0.5;
+    // canvas2
+    //   .getContext("2d")
+    //   .drawImage(canvas, 0, 0, canvas.width, canvas.height); // 绘制canvas
+    // dataURL = canvas2.toDataURL("image/jpeg"); // 转换为base64
+    cnt++;
+    if (cnt % 500 == 0) {
+      imageList.push(canvas); // base64格式的地址
+      cnt = 0;
+    }
     return particle.finished;
   });
 
@@ -64,8 +77,8 @@ function drawFrame(particles, finished) {
 function getPixels(target, space = 5) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
-  const viewWidth = window.innerWidth;
-  const viewHeight = window.innerHeight;
+  const viewWidth = window.innerWidth * 0.5;
+  const viewHeight = window.innerHeight * 0.5;
 
   canvas.width = viewWidth;
   canvas.height = viewHeight;
@@ -73,7 +86,7 @@ function getPixels(target, space = 5) {
   if (typeof target === "string") {
     // 绘制文字
     ctx.font = "150px bold";
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = "#ff0000";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     ctx.fillText(target, viewWidth / 2, viewHeight / 2);
@@ -114,8 +127,8 @@ function createParticles({ text, radius, space }) {
   const pixeles = getPixels(text, space);
   return pixeles.map(({ x, y, rgba: color }) => {
     return new Particle({
-      x: Math.random() * (50 + window.innerWidth) - 50,
-      y: Math.random() * (50 + window.innerHeight) - 50,
+      x: Math.random() * (50 + window.innerWidth * 0.5) - 50,
+      y: Math.random() * (50 + window.innerHeight * 0.5) - 50,
       tx: x,
       ty: y,
       radius,
@@ -131,6 +144,20 @@ function loop(targets, i = 0) {
       i++;
       if (i < targets.length) {
         loop(targets, i);
+      } else {
+        // console.log(imageList);
+        // var gif = new GIF({
+        //   workers: 2,
+        //   quality: 10,
+        //   workerScript: "./gif.worker.js",
+        // });
+        // imageList.forEach((img) => {
+        //   gif.addFrame(img);
+        // });
+        // gif.on("finished", function (blob) {
+        //   window.open(URL.createObjectURL(blob));
+        // });
+        // gif.render();
       }
     }
   );
@@ -138,50 +165,30 @@ function loop(targets, i = 0) {
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth * 0.5;
+canvas.height = window.innerHeight * 0.5;
+
+const uiInput = document.getElementsByClassName("ui-input")[0];
+uiInput.addEventListener("keydown", function (e) {
+  if (e.keyCode === 13) {
+    const keyList = uiInput.value.split(",") || uiInput.value.split("，");
+    console.log(keyList);
+    loop(keyList);
+  }
+});
 
 loop([
+  "🙂",
   "2021",
-  "\uD83D\uDC27",
-  "\uD83D\uDC1F",
-  "\uD83D\uDC0F",
-  "\uD83D\uDC07",
-  "\uD83D\uDC24",
-  "\uD83D\uDC30",
-  "\uD83D\uDC0D",
-  "\uD83E\uDD8B",
-  "\uD83D\uDC08",
-  "\uD83D\uDC0C",
-  "\uD83D\uDC33",
+  // "\uD83D\uDC27",
+  // "\uD83D\uDC1F",
+  // "\uD83D\uDC0F",
+  // "\uD83D\uDC07",
+  // "\uD83D\uDC24",
+  // "\uD83D\uDC30",
+  // "\uD83D\uDC0D",
+  // "\uD83E\uDD8B",
+  // "\uD83D\uDC08",
+  // "\uD83D\uDC0C",
+  // "\uD83D\uDC33",
 ]);
-
-window.onload = function () {
-  const canvas2 = document.createElement("canvas");
-
-  const width = window.innerWidth;
-  const height = window.innerWidth;
-  canvas2.width = width;
-  canvas2.height = height;
-  setTimeout(() => {
-    canvas2.getContext("2d").drawImage(canvas, 0, 0, width, height); // 绘制canvas
-    dataURL = canvas2.toDataURL("image/jpeg"); // 转换为base64
-    console.log("dataURL:", dataURL); // base64格式的地址
-  }, 3000);
-
-  // var gif = new GIF({
-  //   workers: 2,
-  //   quality: 10,
-  //   background: "#ffffff", //原透明色替换为白色
-  //   transparent: 0xffffff, //把图片中的白色替换为gif的透明色
-  // });
-
-  // // or copy the pixels from a canvas context
-  // gif.addFrame(canvas, { delay: 1000 });
-
-  // gif.on("finished", function (blob) {
-  //   window.open(URL.createObjectURL(blob));
-  // });
-
-  // gif.render();
-};
