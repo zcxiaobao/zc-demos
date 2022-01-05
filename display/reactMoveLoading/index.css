@@ -85,7 +85,7 @@ body {
   background: var(--electron-color-hex); /* var(--react-color-hex); */
   border-radius: 100%;
   box-shadow: 0 0 3px 0 var(--react-color-hex);
-  /* animation: 2s nucleus infinite cubic-bezier(0.65, 0, 0.35, 1); */
+  animation: 2s nucleus infinite cubic-bezier(0.65, 0, 0.35, 1);
 }
 @keyframes nucleus {
   0% {
