@@ -174,13 +174,15 @@ body {
   top: 50%;
   left: calc(var(--electron-size) / -1);
   transform: scale(1);
-  animation: calc(var(--electron-speed) * 2) electron infinite ease-in-out;
+  animation: calc(var(--electron-speed) * 2.5) electron infinite ease-in-out;
 }
 .react .electron-alpha::after {
-  animation: calc(var(--electron-speed-alpha) * 2) electron infinite ease-in-out;
+  animation: calc(var(--electron-speed-alpha) * 2.5) electron infinite
+    ease-in-out;
 }
 .react .electron-omega::after {
-  animation: calc(var(--electron-speed-omega) * 2) electron infinite ease-in-out;
+  animation: calc(var(--electron-speed-omega) * 2.5) electron infinite
+    ease-in-out;
 }
 @keyframes electron {
   0% {
