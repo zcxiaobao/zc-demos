@@ -44,7 +44,7 @@ const defaultKeyList = [
   "👨‍👨‍👧‍👦,📺,🦠,🛌,🥼,🦸🏻,🏆,致敬",
   "🐅,小包,🥂,老铁,🥟,🍬,🤓",
 ];
-
+let timer = null;
 class Particle {
   constructor(particle) {
     // 当前坐标
@@ -71,7 +71,7 @@ class Particle {
 
 // 传入粒子对象绘制动画帧，并接受一个动画结束的回调
 function drawFrame(particles, finished) {
-  const timer = window.requestAnimationFrame(() => {
+  timer = window.requestAnimationFrame(() => {
     drawFrame(particles, finished);
   });
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -201,8 +201,12 @@ uiInput.addEventListener("keydown", function (event) {
   if (keyCode === 13) {
     if (!uiInput.value) {
       alert("请输入你的关键词");
+      window.cancelAnimationFrame(timer);
+
       loop(splitKeyList(defaultKeyList[rand(0, defaultKeyList.length)]));
     } else {
+      window.cancelAnimationFrame(timer);
+
       loop(splitKeyList(uiInput.value));
     }
   }
