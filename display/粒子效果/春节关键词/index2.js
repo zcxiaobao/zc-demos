@@ -118,7 +118,7 @@ function getWordPxInfo(target, interval = 5) {
 
   if (typeof target === "string") {
     // 绘制文字
-    const textWidth = viewWidth / 5;
+    const textWidth = viewWidth / 2.5;
     ctx.font = `${
       target.length < 4 ? textWidth : (textWidth * 4) / target.length
     }px bold`;
