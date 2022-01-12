@@ -76,7 +76,7 @@ function drawFrame(particles, finished) {
   });
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // 缓动系数
-  const easing = 0.09;
+  const easing = 0.10;
   const finishedParticles = particles.filter((particle) => {
     // 当前坐标和目标点之间的距离
     const dx = particle.tx - particle.x;
@@ -107,13 +107,13 @@ function drawFrame(particles, finished) {
 }
 
 // 获取目标对象的像素点，interval 控制像素点数量，值越大返回的像素点越少
-function getWordPxInfo(target, interval = 4) {
+function getWordPxInfo(target, interval = 5) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   const viewWidth = window.innerWidth * 0.5;
   const viewHeight = window.innerHeight * 0.5;
   if (window.innerWidth < 1080) {
-    interval /= 2;
+    interval = 3;
   }
   canvas.width = viewWidth;
   canvas.height = viewHeight;
