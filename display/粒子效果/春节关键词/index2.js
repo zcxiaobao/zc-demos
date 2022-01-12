@@ -107,12 +107,14 @@ function drawFrame(particles, finished) {
 }
 
 // 获取目标对象的像素点，interval 控制像素点数量，值越大返回的像素点越少
-function getWordPxInfo(target, interval = 5) {
+function getWordPxInfo(target, interval = 4) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   const viewWidth = window.innerWidth * 0.5;
   const viewHeight = window.innerHeight * 0.5;
-
+  if (window.innerWidth < 1080) {
+    interval /= 2;
+  }
   canvas.width = viewWidth;
   canvas.height = viewHeight;
 
