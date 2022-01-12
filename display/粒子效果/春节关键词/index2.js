@@ -118,8 +118,10 @@ function getWordPxInfo(target, interval = 5) {
 
   if (typeof target === "string") {
     // 绘制文字
-    ctx.font = `${target.length < 4 ? 150 : (150 * 4) / target.length}px bold`;
-    // ctx.fillStyle = randomColor();
+    const textWidth = viewWidth / 5;
+    ctx.font = `${
+      target.length < 4 ? textWidth : (textWidth * 4) / target.length
+    }px bold`;
     const color = colorList[rand(0, colorList.length)];
     ctx.fillStyle = color;
     console.log(color);
@@ -174,7 +176,7 @@ function createParticles({ text, radius, interval }) {
 
 function loop(words, i = 0) {
   return drawFrame(
-    createParticles({ text: words[i], radius: 2, interval: 5 }),
+    createParticles({ text: words[i], radius: 2, interval: 4 }),
     () => {
       i++;
       if (i < words.length && words[i].length > 0) {
