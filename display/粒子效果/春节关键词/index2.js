@@ -120,7 +120,7 @@ function getWordPxInfo(target, interval = 5) {
     // 绘制文字
     const textWidth = viewWidth / 2.5;
     ctx.font = `${
-      target.length < 4 ? textWidth : (textWidth * 4) / target.length
+      target.length < 3 ? textWidth : (textWidth * 3) / (1 + target.length)
     }px bold`;
     const color = colorList[rand(0, colorList.length)];
     ctx.fillStyle = color;
