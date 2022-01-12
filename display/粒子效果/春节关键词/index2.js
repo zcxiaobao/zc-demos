@@ -202,11 +202,9 @@ uiInput.addEventListener("keydown", function (event) {
     if (!uiInput.value) {
       alert("请输入你的关键词");
       window.cancelAnimationFrame(timer);
-
       loop(splitKeyList(defaultKeyList[rand(0, defaultKeyList.length)]));
     } else {
       window.cancelAnimationFrame(timer);
-
       loop(splitKeyList(uiInput.value));
     }
   }
