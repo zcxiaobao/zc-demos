@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bing-Dwen-Dwen</title>
+  </head>
+
+  <body>
+    <canvas id="canvas" height="600" width="600"></canvas>
+    <script>
+      function sleep2(ms) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(resolve, ms);
+        });
+      }
+      function draw() {
+        const canvas = document.getElementById("canvas");
+        if (!canvas.getContext) return;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#FFF";
+        ctx.fillRect(0, 0, 600, 600);
+
+        const bezierCurve = (x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2) => {
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x2, y2);
+          ctx.stroke();
+        };
+
+        ctx.fillStyle = "#000";
+        ctx.strokeStyle = "#bfbfbf";
+        ctx.lineWidth = 3;
+
+        /* 绘制轮廓 */
+        [
+          [220, 62, 148, 23, 121, 104, 143, 131],
+          [220, 62, 264, 46, 349, 43, 369, 57],
+          [434, 110, 468, 36, 384, 32, 369, 57],
+          [434, 110, 461, 154, 448, 126, 469, 175],
+          [478, 296, 482, 254, 486, 238, 469, 175],
+          [478, 296, 454, 421, 420, 425, 406, 472],
+          [401, 532, 402, 500, 399, 510, 406, 472],
+          [401, 532, 407, 555, 387, 561, 380, 560],
+          [301, 543, 304, 568, 357, 565, 380, 560],
+          [301, 543, 298, 531, 324, 502, 269, 508],
+          [252, 555, 280, 533, 238, 526, 269, 508],
+          [252, 555, 193, 563, 153, 570, 163, 514],
+          [117, 350, 126, 407, 167, 427, 163, 514],
+          [117, 350, 102, 374, 118, 424, 55, 406],
+          [103, 262, 44, 339, 22, 375, 55, 406],
+          [103, 262, 107, 225, 116, 181, 142, 131],
+          [558, 196, 570, 161, 501, 110, 471, 177],
+          [558, 196, 541, 240, 507, 276, 478, 297],
+        ].forEach((elem) => {
+          bezierCurve(...elem);
+        });
+        ctx.lineWidth = 0;
+        ctx.strokeStyle = "#000000";
+        /* 黑色部分 */
+        [
+          [204, 77, 173, 59, 151, 87, 161, 111],
+          [382, 65, 403, 45, 450, 67, 425, 105],
+          [180, 255, 154, 210, 246, 137, 278, 177],
+          [180, 254, 202, 302, 316, 232, 277, 176],
+          [428, 266, 402, 300, 310, 207, 351, 171],
+          [428, 267, 453, 226, 390, 140, 350, 172],
+          [337, 224, 337, 208, 304, 210, 301, 221],
+          [337, 223, 330, 241, 300, 236, 301, 220],
+
+          [115, 346, 108, 319, 105, 297, 106, 274],
+          [105, 273, 70, 322, 40, 365, 57, 388],
+          [107, 367, 107, 405, 70, 409, 57, 388],
+
+          [115, 345, 107, 353, 106, 364, 106, 375],
+
+          [475, 186, 482, 223, 481, 244, 481, 273],
+          [475, 186, 500, 127, 560, 175, 544, 198],
+          [482, 273, 506, 256, 527, 235, 544, 198],
+          [482, 273, 483, 240, 480, 216, 475, 187],
+
+          [172, 460, 217, 471, 247, 495, 255, 503],
+          [235, 544, 273, 533, 230, 525, 254, 504],
+          [235, 544, 212, 541, 176, 554, 178, 517],
+          [171, 460, 178, 480, 177, 500, 178, 517],
+
+          [401, 461, 357, 474, 334, 484, 307, 510],
+          [330, 543, 307, 541, 319, 516, 307, 510],
+          [330, 543, 365, 544, 393, 549, 389, 514],
+          [400, 463, 398, 474, 387, 492, 389, 514],
+
+          [283, 250, 306, 266, 329, 263, 342, 249],
+        ].forEach((elem) => {
+          bezierCurve(...elem);
+          ctx.fill();
+        });
+
+        /* 白色填充区 */
+        ctx.strokeStyle = "#fff";
+        ctx.fillStyle = "#fff";
+        ctx.lineWidth = 0;
+        [[283, 250, 305, 261, 328, 260, 342, 249]].forEach((elem) => {
+          bezierCurve(...elem);
+          ctx.fill();
+        });
+
+        ctx.beginPath();
+        ctx.moveTo(280, 246);
+        ctx.lineTo(280, 251);
+        ctx.lineTo(345, 251);
+        ctx.lineTo(345, 238);
+        ctx.fill();
+
+        ctx.fillStyle = "#000";
+        /* 黑色填充区 */
+        ctx.beginPath();
+        ctx.moveTo(104, 273);
+        ctx.lineTo(56, 389);
+        ctx.lineTo(105, 368);
+        ctx.lineTo(115, 345);
+        ctx.fill(); //填充闭合区域。如果path没有闭合，则fill()会自动闭合路径。
+
+        ctx.beginPath();
+        ctx.moveTo(171, 459);
+        ctx.lineTo(178, 520);
+        ctx.lineTo(237, 545);
+        ctx.lineTo(254, 502);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(307, 509);
+        ctx.lineTo(329, 544);
+        ctx.lineTo(388, 515);
+        ctx.lineTo(400, 461);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(483, 275);
+        ctx.lineTo(545, 197);
+        ctx.lineTo(476, 185);
+        ctx.fill();
+
+        /* 奥运五环 */
+        ctx.strokeStyle = "#006BB0";
+        ctx.lineWidth = 3;
+        [
+          [137, 258, 126, 70, 398, 16, 461, 212],
+          [137, 258, 137, 422, 502, 466, 461, 212],
+        ].forEach((elem) => {
+          bezierCurve(...elem);
+        });
+
+        ctx.strokeStyle = "#EFA90D";
+        [
+          [147, 257, 145, 419, 496, 442, 455, 213],
+          [147, 257, 142, 51, 416, 57, 455, 213],
+        ].forEach((elem) => {
+          bezierCurve(...elem);
+        });
+
+        ctx.strokeStyle = "#1D1815";
+        [
+          [155, 257, 144, 61, 412, 63, 447, 215],
+          [155, 257, 161, 397, 485, 431, 447, 215],
+        ].forEach((elem) => {
+          bezierCurve(...elem);
+        });
+
+        ctx.strokeStyle = "#059341";
+        [
+          [165, 253, 172, 390, 485, 410, 441, 212],
+          [165, 253, 142, 96, 388, 53, 441, 212],
+        ].forEach((elem) => {
+          bezierCurve(...elem);
+        });
+
+        ctx.strokeStyle = "#DC2F1F";
+        [
+          [172, 251, 143, 107, 379, 59, 434, 213],
+          [172, 251, 170, 370, 479, 399, 434, 213],
+        ].forEach((elem) => {
+          bezierCurve(...elem);
+        });
+
+        /* 眼睛 */
+        ctx.strokeStyle = "#fff";
+        ctx.fillStyle = "#fff";
+        ctx.lineWidth = 0;
+
+        ctx.beginPath();
+        ctx.arc(248, 204, 25, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(375, 204, 25, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+        /* 瞳孔 */
+        ctx.fillStyle = "#2f4f4fe0";
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 0;
+        ctx.beginPath();
+        ctx.arc(375, 204, 21, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(249, 204, 21, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+        /* 眼珠 */
+        ctx.fillStyle = "#000";
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 0;
+
+        ctx.beginPath();
+        ctx.arc(372, 206, 10, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(252, 206, 10, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+        /* 眼光 */
+        ctx.fillStyle = "#fff";
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 0;
+
+        ctx.beginPath();
+        ctx.arc(371, 192, 3, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(251, 192, 3, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+        /* 字样与小五环 */
+        ctx.fillStyle = "#000";
+        ctx.font = "16px sans-serif";
+        ctx.fillText("BEIJING 2022", 236, 450);
+        ctx.font = "10px sans-serif";
+        ctx.fillText("Made by Javascript.", 10, 10);
+        ctx.fillText("Feb 11 2022 lookcos", 10, 25);
+
+        ctx.strokeStyle = "#006BB0";
+
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(270, 465, 6, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.strokeStyle = "#EFA90D";
+
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(286, 465, 6, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.strokeStyle = "#1D1815";
+        ctx.fillStyle = "#fff";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(302, 465, 6, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.strokeStyle = "#059341";
+
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(278, 470, 6, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.strokeStyle = "#DC2F1F";
+
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(296, 470, 6, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.lineWidth = 0;
+        ctx.fillStyle = "red";
+
+        /* 手掌红心 */
+        [
+          [513, 179, 531, 173, 528, 193, 516, 196],
+          [513, 179, 513, 161, 489, 167, 496, 186],
+          [520, 193, 499, 208, 495, 207, 495, 180],
+        ].forEach((elem) => {
+          bezierCurve(...elem);
+          ctx.fill();
+        });
+
+        ctx.fillStyle = "red";
+        /* 黑色填充区 */
+        ctx.beginPath();
+        ctx.moveTo(499, 201);
+        ctx.lineTo(524, 185);
+        ctx.lineTo(499, 172);
+        ctx.fill(); //填充闭合区域。如果path没有闭合，则fill()会自动闭合路径。
+      }
+      draw();
+    </script>
+  </body>
+</html>

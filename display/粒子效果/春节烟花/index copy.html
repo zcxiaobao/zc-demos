@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>春节烟花</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      function createTextCanvas(text, width) {
+        const textCvs = document.createElement("canvas");
+        const textCtx = textCvs.getContext("2d");
+        let size = (textCvs.width = textCvs.height = width < 400 ? 200 : 300);
+        textCtx.font = `bold ${size}px Arial`;
+        textCtx.fillStyle = "white";
+        textCtx.textBaseline = "middle";
+        textCtx.textAlign = "center";
+        textCtx.fillText(text, size / 2, size / 2);
+        return { ctx: textCtx, size };
+      }
+
+      function getTextCvsImgData(ctx, size) {
+        let textData = ctx.getImageData(0, 0, size, size);
+        let particleList = [];
+        for (var i = 0; particleList.length < particles; i++) {
+          let x = size * Math.random();
+          let y = size * Math.random();
+          let offset = parseInt(y) * size * 4 + parseInt(x) * 4;
+          if (textData.data[offset])
+            particleList.push([x - size / 2, y - size / 2]);
+        }
+        return particleList;
+      }
+
+      let chars, particles, w, h, current;
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      let duration = 5000;
+      let str = ["❤"];
+
+      resize();
+      requestAnimationFrame(render);
+      addEventListener("resize", resize);
+
+      function makeChar(c) {
+        const { ctx, size } = createTextCanvas(c, w);
+        return getTextCvsImgData(ctx, size);
+      }
+
+      function resize() {
+        w = canvas.width = innerWidth;
+        h = canvas.height = innerHeight;
+        particles = innerWidth < 400 ? 55 : 99;
+      }
+
+      function makeChars(t) {
+        let actual = parseInt(t / duration) % str.length;
+        if (current === actual) return;
+        current = actual;
+        chars = [...str[actual]].map(makeChar);
+      }
+
+      function render(t) {
+        console.log(t);
+        makeChars(t);
+        //requestAnimationFrame(render);
+        ctx.fillStyle = "#00000010";
+        ctx.fillRect(0, 0, w, h);
+        chars.forEach((pts, i) => firework(t, i, pts));
+      }
+
+      function firework(t, i, pts) {
+        t -= i * 200;
+        let id = i + chars.length * parseInt(t - (t % duration));
+        t = (t % duration) / duration;
+        let dx = ((i + 1) * w) / (1 + chars.length);
+        dx += Math.min(0.33, t) * 100 * Math.sin(id);
+        let dy = h * 0.5;
+        dy += Math.sin(id * 4547.411) * h * 0.1;
+        if (t < 0.33) {
+          rocket(dx, dy, id, t * 3);
+        } else {
+          explosion(pts, dx, dy, id, Math.min(1, Math.max(0, t - 0.33) * 2));
+        }
+      }
+
+      function rocket(x, y, id, t) {
+        ctx.fillStyle = "white";
+        let r = 2 - 2 * t + Math.pow(t, 15 * t) * 16;
+        y = h - y * t;
+        circle(x, y, r);
+      }
+
+      function explosion(pts, x, y, id, t) {
+        let dy = t * t * t * 20;
+        let r = Math.sin(id) * 1 + 3;
+        r = t < 0.5 ? (t + 0.5) * t * r : r - t * r;
+        ctx.fillStyle = `hsl(${id * 55}, 55%, 55%)`;
+        pts.forEach((xy, i) => {
+          if (i % 20 === 0)
+            ctx.fillStyle = `hsl(${id * 55}, 55%, ${
+              55 + t * Math.sin(t * 55 + i) * 45
+            }%)`;
+          circle(t * xy[0] + x, h - y + t * xy[1] + dy, r);
+        });
+      }
+
+      function circle(x, y, r) {
+        ctx.beginPath();
+        ctx.ellipse(x, y, r, r, 0, 0, 6.283);
+        ctx.fill();
+      }
+    </script>
+  </body>
+</html>

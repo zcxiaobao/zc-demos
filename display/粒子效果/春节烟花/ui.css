@@ -1,0 +1,51 @@
+.ui {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  width: 300px;
+  margin-left: -150px;
+}
+
+.ui-input {
+  width: 100%;
+  height: 50px;
+  background: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+.ui-input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+.ui-return {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  padding: 3px 2px 0 2px;
+  font-size: 10px;
+  line-height: 10px;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.ui--enter .ui-return {
+  display: block;
+}
+
+.ui--wide {
+  width: 76%;
+  margin-left: 12%;
+  left: 0;
+}
+
+.ui--wide .ui-return {
+  right: -20px;
+}

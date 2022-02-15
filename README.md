@@ -29,3 +29,7 @@
 
 ### 粒子世界
 - [x] 你的春节记忆是什么？来一起分享一下吧
+
+### 冰墩墩绘制
+- [源码](./display/bingdwendwen/index.html)
+- [体验地址](https://zcxiaobao.github.io/zc-demos/display/bingdwendwen/index.html)
