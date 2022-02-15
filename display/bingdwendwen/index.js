@@ -1,5 +1,5 @@
-// 缩放参数为2
-const SCALE = 2;
+// 缩放参数为3
+const SCALE = 3;
 // 对测量参数进行缩放
 function scaleParam(x) {
   return x / SCALE;
