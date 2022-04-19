@@ -40,7 +40,7 @@ bezierCurveTo(ctx, 306, 916, 365, 845, 407, 777);
 bezierCurveTo(ctx, 433, 669, 449, 545, 497, 462);
 ctx.stroke();
 
-// 左耳
+// 冰墩墩左耳朵
 ctx.beginPath();
 moveTo(ctx, 526, 437);
 bezierCurveTo(ctx, 498, 263, 667, 325, 641, 329);
@@ -49,7 +49,7 @@ ctx.fillStyle = "#000000";
 ctx.fill();
 ctx.stroke();
 
-// 右耳
+// 冰墩墩右耳朵
 ctx.beginPath();
 moveTo(ctx, 1050, 285);
 bezierCurveTo(ctx, 1144, 232, 1167, 342, 1162, 387);
@@ -58,7 +58,7 @@ ctx.fillStyle = "#000000";
 ctx.fill();
 ctx.stroke();
 
-// 左手
+// 冰墩墩左手
 ctx.beginPath();
 moveTo(ctx, 417, 804);
 bezierCurveTo(ctx, 430, 837, 435, 914, 457, 968);
@@ -69,7 +69,7 @@ ctx.fillStyle = "#000000";
 ctx.fill();
 ctx.stroke();
 
-// 右手
+// 冰墩墩右手
 ctx.beginPath();
 moveTo(ctx, 1267, 593);
 bezierCurveTo(ctx, 1275, 584, 1279, 574, 1280, 555);
@@ -80,7 +80,7 @@ ctx.fillStyle = "#000000";
 ctx.fill();
 ctx.stroke();
 
-// 左脚
+// 冰墩墩左脚
 ctx.beginPath();
 moveTo(ctx, 585, 1231);
 bezierCurveTo(ctx, 626, 1261, 776, 1297, 792, 1336);
@@ -90,7 +90,7 @@ ctx.fillStyle = "#000000";
 ctx.fill();
 ctx.stroke();
 
-// 右脚
+// 冰墩墩右脚
 ctx.beginPath();
 moveTo(ctx, 910, 1342);
 bezierCurveTo(ctx, 981, 1318, 938, 1293, 1125, 1226);
@@ -186,184 +186,187 @@ bezierCurveTo(ctx, 548, 441, 1057, 300, 1191, 640);
 bezierCurveTo(ctx, 1319, 1048, 567, 1021, 549, 752);
 ctx.stroke();
 
-// 嘴巴
-ctx.beginPath();
-ctx.lineWidth = 1;
-ctx.strokeStyle = "#000000";
-moveTo(ctx, 824, 728);
-bezierCurveTo(ctx, 895, 754, 939, 740, 982, 726);
-bezierCurveTo(ctx, 935, 782, 861, 764, 824, 728);
-ctx.fillStyle = "#000000";
-ctx.fill();
-ctx.stroke();
+// // 嘴巴
+// ctx.beginPath();
+// ctx.lineWidth = 1;
+// ctx.strokeStyle = "#000000";
+// moveTo(ctx, 824, 728);
+// bezierCurveTo(ctx, 895, 754, 939, 740, 982, 726);
+// bezierCurveTo(ctx, 935, 782, 861, 764, 824, 728);
+// ctx.fillStyle = "#000000";
+// ctx.fill();
+// ctx.stroke();
 
-ctx.beginPath();
-moveTo(ctx, 870, 750);
-bezierCurveTo(ctx, 876, 746, 939, 745, 945, 749);
-bezierCurveTo(ctx, 910, 764, 872, 755, 870, 750);
-ctx.fillStyle = "#e5482d";
-ctx.fill();
-ctx.stroke();
-// 小红心
-ctx.beginPath();
-moveTo(ctx, 1364, 545);
-bezierCurveTo(ctx, 1359, 525, 1300, 508, 1331, 595);
-bezierCurveTo(ctx, 1338, 615, 1349, 607, 1356, 605);
-bezierCurveTo(ctx, 1394, 587, 1420, 532, 1364, 545);
-ctx.fillStyle = "red";
-ctx.fill();
-ctx.stroke();
-// 左眼
-ctx.beginPath();
-moveTo(ctx, 749, 595);
-bezierCurveTo(ctx, 798, 592, 829, 709, 743, 712);
-bezierCurveTo(ctx, 659, 707, 686, 593, 749, 595);
-ctx.fillStyle = "#ffffff";
-ctx.fill();
-ctx.stroke();
+// ctx.beginPath();
+// moveTo(ctx, 870, 750);
+// bezierCurveTo(ctx, 876, 746, 939, 745, 945, 749);
+// bezierCurveTo(ctx, 910, 764, 872, 755, 870, 750);
+// ctx.fillStyle = "#e5482d";
+// ctx.fill();
+// ctx.stroke();
 
-ctx.beginPath();
-moveTo(ctx, 699, 655);
-bezierCurveTo(ctx, 696, 596, 782, 574, 783, 653);
-bezierCurveTo(ctx, 775, 735, 694, 699, 699, 655);
-var l_eye = ctx.createRadialGradient(
-  742 / SCALE,
-  652 / SCALE,
-  20 / SCALE,
-  742 / SCALE,
-  652 / SCALE,
-  50 / SCALE
-);
-l_eye.addColorStop(0, "#857343");
-l_eye.addColorStop(1, "black");
-ctx.fillStyle = l_eye;
-ctx.fill();
-ctx.stroke();
+// // 左眼
+// ctx.beginPath();
+// moveTo(ctx, 749, 595);
+// bezierCurveTo(ctx, 798, 592, 829, 709, 743, 712);
+// bezierCurveTo(ctx, 659, 707, 686, 593, 749, 595);
+// ctx.fillStyle = "#ffffff";
+// ctx.fill();
+// ctx.stroke();
 
-ctx.beginPath();
-moveTo(ctx, 719, 655);
-bezierCurveTo(ctx, 716, 633, 760, 609, 762, 657);
-bezierCurveTo(ctx, 755, 691, 723, 676, 719, 655);
-ctx.fillStyle = "#000000";
-ctx.fill();
-ctx.stroke();
+// ctx.beginPath();
+// moveTo(ctx, 699, 655);
+// bezierCurveTo(ctx, 696, 596, 782, 574, 783, 653);
+// bezierCurveTo(ctx, 775, 735, 694, 699, 699, 655);
+// var l_eye = ctx.createRadialGradient(
+//   742 / SCALE,
+//   652 / SCALE,
+//   20 / SCALE,
+//   742 / SCALE,
+//   652 / SCALE,
+//   50 / SCALE
+// );
+// l_eye.addColorStop(0, "#857343");
+// l_eye.addColorStop(1, "black");
+// ctx.fillStyle = l_eye;
+// ctx.fill();
+// ctx.stroke();
 
-// 右眼
-ctx.beginPath();
-moveTo(ctx, 988, 630);
-bezierCurveTo(ctx, 997, 569, 1091, 548, 1087, 647);
-bezierCurveTo(ctx, 1079, 719, 976, 710, 988, 630);
-ctx.fillStyle = "#ffffff";
-ctx.fill();
-ctx.stroke();
+// ctx.beginPath();
+// moveTo(ctx, 719, 655);
+// bezierCurveTo(ctx, 716, 633, 760, 609, 762, 657);
+// bezierCurveTo(ctx, 755, 691, 723, 676, 719, 655);
+// ctx.fillStyle = "#000000";
+// ctx.fill();
+// ctx.stroke();
 
-ctx.beginPath();
-moveTo(ctx, 995, 634);
-bezierCurveTo(ctx, 993, 584, 1077, 559, 1077, 641);
-bezierCurveTo(ctx, 1068, 707, 993, 689, 995, 634);
-var r_eye = ctx.createRadialGradient(
-  1040 / SCALE,
-  635 / SCALE,
-  20 / SCALE,
-  1040 / SCALE,
-  635 / SCALE,
-  50 / SCALE
-);
-r_eye.addColorStop(0, "#857343");
-r_eye.addColorStop(1, "black");
-ctx.fillStyle = r_eye;
-ctx.fill();
-ctx.stroke();
+// // 右眼
+// ctx.beginPath();
+// moveTo(ctx, 988, 630);
+// bezierCurveTo(ctx, 997, 569, 1091, 548, 1087, 647);
+// bezierCurveTo(ctx, 1079, 719, 976, 710, 988, 630);
+// ctx.fillStyle = "#ffffff";
+// ctx.fill();
+// ctx.stroke();
 
-ctx.beginPath();
-moveTo(ctx, 1022, 621);
-bezierCurveTo(ctx, 1055, 596, 1065, 650, 1042, 659);
-bezierCurveTo(ctx, 1027, 662, 1002, 646, 1022, 621);
-ctx.fillStyle = "#000000";
-ctx.fill();
-ctx.stroke();
+// ctx.beginPath();
+// moveTo(ctx, 995, 634);
+// bezierCurveTo(ctx, 993, 584, 1077, 559, 1077, 641);
+// bezierCurveTo(ctx, 1068, 707, 993, 689, 995, 634);
+// var r_eye = ctx.createRadialGradient(
+//   1040 / SCALE,
+//   635 / SCALE,
+//   20 / SCALE,
+//   1040 / SCALE,
+//   635 / SCALE,
+//   50 / SCALE
+// );
+// r_eye.addColorStop(0, "#857343");
+// r_eye.addColorStop(1, "black");
+// ctx.fillStyle = r_eye;
+// ctx.fill();
+// ctx.stroke();
 
-// 左眼高光
-ctx.strokeStyle = "#ffffff";
-ctx.beginPath();
-ctx.arc(743 / SCALE, 623 / SCALE, 13 / SCALE, 0, 2 * Math.PI);
-ctx.fillStyle = "#ffffff";
-ctx.fill();
-ctx.stroke();
-ctx.strokeStyle = "#000000";
+// ctx.beginPath();
+// moveTo(ctx, 1022, 621);
+// bezierCurveTo(ctx, 1055, 596, 1065, 650, 1042, 659);
+// bezierCurveTo(ctx, 1027, 662, 1002, 646, 1022, 621);
+// ctx.fillStyle = "#000000";
+// ctx.fill();
+// ctx.stroke();
 
-ctx.strokeStyle = "#5fc2ba";
-ctx.beginPath();
-ctx.arc(732 / SCALE, 675 / SCALE, 7 / SCALE, 0, 2 * Math.PI);
-ctx.fillStyle = "#5fc2ba";
-ctx.fill();
-ctx.stroke();
-ctx.strokeStyle = "#000000";
+// // 左眼高光
+// ctx.strokeStyle = "#ffffff";
+// ctx.beginPath();
+// ctx.arc(743 / SCALE, 623 / SCALE, 13 / SCALE, 0, 2 * Math.PI);
+// ctx.fillStyle = "#ffffff";
+// ctx.fill();
+// ctx.stroke();
+// ctx.strokeStyle = "#000000";
 
-// 右眼高光
-ctx.strokeStyle = "#ffffff";
-ctx.beginPath();
-ctx.arc(1036 / SCALE, 606 / SCALE, 12 / SCALE, 0, 2 * Math.PI);
-ctx.fillStyle = "#ffffff";
-ctx.fill();
-ctx.stroke();
-ctx.strokeStyle = "#000000";
+// ctx.strokeStyle = "#5fc2ba";
+// ctx.beginPath();
+// ctx.arc(732 / SCALE, 675 / SCALE, 7 / SCALE, 0, 2 * Math.PI);
+// ctx.fillStyle = "#5fc2ba";
+// ctx.fill();
+// ctx.stroke();
+// ctx.strokeStyle = "#000000";
 
-ctx.strokeStyle = "#5fc2ba";
-ctx.beginPath();
-ctx.arc(1024 / SCALE, 659 / SCALE, 7 / SCALE, 0, 2 * Math.PI);
-ctx.fillStyle = "#5fc2ba";
-ctx.fill();
-ctx.stroke();
-ctx.strokeStyle = "#000000";
+// // 右眼高光
+// ctx.strokeStyle = "#ffffff";
+// ctx.beginPath();
+// ctx.arc(1036 / SCALE, 606 / SCALE, 12 / SCALE, 0, 2 * Math.PI);
+// ctx.fillStyle = "#ffffff";
+// ctx.fill();
+// ctx.stroke();
+// ctx.strokeStyle = "#000000";
 
-// 鼻子
-ctx.beginPath();
-moveTo(ctx, 914, 646);
-bezierCurveTo(ctx, 863, 646, 867, 682, 901, 698);
-bezierCurveTo(ctx, 920, 706, 927, 704, 941, 694);
-bezierCurveTo(ctx, 970, 668, 961, 644, 914, 646);
-ctx.fillStyle = "#000000";
-ctx.fill();
-ctx.stroke();
+// ctx.strokeStyle = "#5fc2ba";
+// ctx.beginPath();
+// ctx.arc(1024 / SCALE, 659 / SCALE, 7 / SCALE, 0, 2 * Math.PI);
+// ctx.fillStyle = "#5fc2ba";
+// ctx.fill();
+// ctx.stroke();
+// ctx.strokeStyle = "#000000";
 
-ctx.beginPath();
-moveTo(ctx, 886, 666);
-bezierCurveTo(ctx, 887, 648, 945, 644, 944, 666);
-bezierCurveTo(ctx, 944, 686, 886, 683, 886, 666);
-var nose = ctx.createLinearGradient(910, 650, 910, 675);
-nose.addColorStop(1, "black");
-nose.addColorStop(0, "white");
-ctx.fillStyle = nose;
-ctx.fill();
-ctx.stroke();
-// 五环
-ctx.lineWidth = 3;
-ctx.strokeStyle = "#ebcb44";
-ctx.beginPath();
-ctx.arc(886 / SCALE, 1245 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
-ctx.stroke();
+// // 鼻子
+// ctx.beginPath();
+// moveTo(ctx, 914, 646);
+// bezierCurveTo(ctx, 863, 646, 867, 682, 901, 698);
+// bezierCurveTo(ctx, 920, 706, 927, 704, 941, 694);
+// bezierCurveTo(ctx, 970, 668, 961, 644, 914, 646);
+// ctx.fillStyle = "#000000";
+// ctx.fill();
+// ctx.stroke();
 
-ctx.lineWidth = 3;
-ctx.strokeStyle = "#2bb459";
-ctx.beginPath();
-ctx.arc(921 / SCALE, 1245 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
-ctx.stroke();
+// ctx.beginPath();
+// moveTo(ctx, 886, 666);
+// bezierCurveTo(ctx, 887, 648, 945, 644, 944, 666);
+// bezierCurveTo(ctx, 944, 686, 886, 683, 886, 666);
+// var nose = ctx.createLinearGradient(910, 650, 910, 675);
+// nose.addColorStop(1, "black");
+// nose.addColorStop(0, "white");
+// ctx.fillStyle = nose;
+// ctx.fill();
+// ctx.stroke();
 
-ctx.lineWidth = 3;
-ctx.strokeStyle = "#5398db";
-ctx.beginPath();
-ctx.arc(871 / SCALE, 1230 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
-ctx.stroke();
+// // 五环
+// ctx.lineWidth = 3;
+// ctx.strokeStyle = "#ebcb44";
+// ctx.beginPath();
+// ctx.arc(886 / SCALE, 1245 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
+// ctx.stroke();
 
-ctx.lineWidth = 3;
-ctx.strokeStyle = "#2c2e2e";
-ctx.beginPath();
-ctx.arc(906 / SCALE, 1230 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
-ctx.stroke();
+// ctx.lineWidth = 3;
+// ctx.strokeStyle = "#2bb459";
+// ctx.beginPath();
+// ctx.arc(921 / SCALE, 1245 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
+// ctx.stroke();
 
-ctx.lineWidth = 3;
-ctx.strokeStyle = "#f53e59";
-ctx.beginPath();
-ctx.arc(941 / SCALE, 1230 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
-ctx.stroke();
+// ctx.lineWidth = 3;
+// ctx.strokeStyle = "#5398db";
+// ctx.beginPath();
+// ctx.arc(871 / SCALE, 1230 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
+// ctx.stroke();
+
+// ctx.lineWidth = 3;
+// ctx.strokeStyle = "#2c2e2e";
+// ctx.beginPath();
+// ctx.arc(906 / SCALE, 1230 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
+// ctx.stroke();
+
+// ctx.lineWidth = 3;
+// ctx.strokeStyle = "#f53e59";
+// ctx.beginPath();
+// ctx.arc(941 / SCALE, 1230 / SCALE, 15 / SCALE, 0, 2 * Math.PI);
+// ctx.stroke();
+
+// // 爱心
+// ctx.beginPath();
+// moveTo(ctx, 1364, 545);
+// bezierCurveTo(ctx, 1359, 525, 1300, 508, 1331, 595);
+// bezierCurveTo(ctx, 1338, 615, 1349, 607, 1356, 605);
+// bezierCurveTo(ctx, 1394, 587, 1420, 532, 1364, 545);
+// ctx.fillStyle = "red";
+// ctx.fill();
+// ctx.stroke();

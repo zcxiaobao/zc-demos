@@ -1,0 +1,18 @@
+const operator = [
+  { name: "船长", id: "captain" },
+  { name: "Zoe_2333", id: "zoe" },
+  { name: "来自格兰芬多的邦妮", id: "bon" },
+  { name: "宝儿姐", id: "baoer" },
+  { name: "掘金Troy", id: "troy" },
+  { name: "大茹", id: "ru" },
+  { name: "优弧", id: "youhu" },
+  { name: "梅楼封", id: "bug" },
+  { name: "掘金酱", id: "juejin" },
+  { name: "倩", id: "qian" },
+  { name: "魔芋结", id: "moyu" },
+  { name: "掘金小助手", id: "feidian" },
+  { name: "琳达哒哒", id: "linda" },
+  { name: "稀土官方小铺", id: "shop" },
+  { name: "yoyo船长", id: "yoyo" },
+  { name: "甜甜的笑脸", id: "smile" },
+];

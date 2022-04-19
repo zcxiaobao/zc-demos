@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="board"></div>
+    <div class="clone">
+      <div class="face"></div>
+      <div class="face"></div>
+      <div class="face"></div>
+      <div class="face"></div>
+      <div class="face"></div>
+      <div class="face"></div>
+    </div>
+    <div class="overlay hidden">
+      <div class="gameover">
+        <p class="info">YOU WON!</p>
+        <button class="reset">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+            <path
+              d="M485.8 113.9L349.3 250.5c-3.5 3.5-3.5 9.1 0 12.6l136.6 136.6c5.6 5.6 15.2 1.6 15.2-6.3V120.2c-.1-7.9-9.7-11.9-15.3-6.3z"
+              fill="#fff"
+            />
+            <path
+              d="M500 194.8V317c125.9 0 228 102.1 228 228S625.9 773 500 773v121.8c193.3 0 350-156.7 350-350s-156.7-350-350-350zM272 545c0-55.1 19.6-105.7 52.1-145.1 6.5-7.9 5.9-19.5-1.4-26.8l-58.3-58.3c-8.2-8.2-21.7-7.7-29.3 1-53 61.5-85.1 141.5-85.1 229 0 193.3 156.7 350 350 350V773c-125.9 0-228-102.1-228-228z"
+              fill="#fff"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="./operatior.js"></script>
+    <script src="./init.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
