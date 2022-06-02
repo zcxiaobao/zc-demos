@@ -262,7 +262,6 @@
       })
       .height($(window).height())
       .width($(window).width());
-    console.log($(window).height());
     $.each(hopeList, function (i, v) {
       createItem(v);
     });
