@@ -1,0 +1,209 @@
+
+
+:root{
+  font-size: 20px;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+}
+body{
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 1.1;
+	color: #102770;
+	overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  background: url(./images/bg2.jpg) no-repeat;
+  background-size: 100%;
+  background-size: cover;
+  background-position: center center; 
+  background-attachment: fixed;
+}
+.card-wrap {
+  position: relative;
+  width: 120px;
+  max-width: calc(100% - 20px);
+  height: 160px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  position: absolute;
+  border-radius: 6px;
+  box-shadow: 0 12px 35px 0 rgba(16, 39, 112,.07);
+  
+}
+
+.card-content{
+  position: relative;
+  padding-top: 20px;
+  width: 100%;
+  display: block;
+  z-index: 2;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  opacity: 0.75;
+}
+.card-content h4{
+  position: relative;
+  margin-top: 28px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 14px;
+  line-height: 1.1;
+  transform: translate3d(0, 0, 35px) perspective(100px);
+  opacity: 0.9;
+  font-family: KaiTi;
+}
+.card-content .avatar {
+  position: relative;
+  margin-top: 8px;
+}
+.card-content .avatar img{
+  position: absolute;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: block;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 6px 20px 0 rgba(16, 39, 112,.3);
+  animation: border-transform 6s linear infinite;
+}
+
+@keyframes border-transform{
+  0%,100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; } 
+  14% { border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%; } 
+  28% { border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%; } 
+  42% { border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%; } 
+  56% { border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%; } 
+  70% { border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; } 
+  84% { border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; } 
+}
+
+
+.card-content .hope {
+  box-sizing: border-box;
+  padding: 10px;
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-weight: bold;
+  color: #32CD32;
+  opacity: .0.9;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-family: YouYuan;
+}
+
+.card.biye{
+  background-image: url(./images/biye2.png);
+  background-size: 100% 100%;
+}
+.card.future{
+  background-image: url(./images/future2.png);
+  background-size: 100% 100%;
+}
+
+.card.gaokao{
+  background-image: url(./images/gaokao.png);
+  background-size: 100% 100%;
+}
+
+.img-wrap img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.img-1{
+  position: absolute;
+  display: block;
+  left: -160px;
+  top: -50px;
+  z-index: 5;
+  width: calc(80% + 160px);
+  transform: translate3d(0, 0, 45px) perspective(100px);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 400ms 1200ms ease, opacity 400ms 1200ms ease;
+}
+
+.img-2 {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+}
+.img-3{
+  position: absolute;
+  display: block;
+  right: -20px;
+  top: -40px;
+  z-index: 5;
+  width: calc(60% + 20px);
+  transform: translate3d(0, 0, 55px) perspective(100px) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 300ms 1300ms ease, opacity 200ms 1300ms ease;
+}
+.img-4{
+  position: absolute;
+  display: block;
+  left: -60px;
+  top: -60px;
+  z-index: 5;
+  width: calc(65% + 60px);
+  transform: translate3d(0, 0, 45px) perspective(100px) scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 400ms ease, opacity 200ms 150ms ease;
+}
+
+.img-5{
+  position: absolute;
+  display: block;
+  right: -70px;
+  top: -50px;
+  z-index: 6;
+  width: calc(60% + 70px);
+  transform: translate3d(0, 0, 35px) perspective(100px) scale(0.5) rotate(0deg);
+  opacity: 1;
+}
+
+.img-7{
+  position: absolute;
+  display: block;
+  right: -30px;
+  bottom: -65px;
+  z-index: 6;
+  width: calc(25% + 30px);
+  transform: translate3d(0, 0, 35px) perspective(100px) scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 400ms 100ms ease, opacity 200ms 250ms ease;
+}
