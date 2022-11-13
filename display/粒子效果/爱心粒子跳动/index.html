@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>爱心函数</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="heart"></canvas>
+    <script>
+      function rand(n, m, flag = true) {
+        var c = m - n;
+        if (flag) {
+          return Math.floor(Math.random() * c + n);
+        } else {
+          return Math.random() * c + n;
+        }
+      }
+      function generatorHeart(t, scale = 12) {
+        let x = 16 * Math.sin(t) ** 3;
+        let y = -(
+          13 * Math.cos(t) -
+          5 * Math.cos(2 * t) -
+          2 * Math.cos(3 * t) -
+          Math.cos(4 * t)
+        );
+        x = x * scale + width / 2;
+        y = y * scale + height / 2;
+        return new Point(x, y, 0);
+      }
+      function curve(x) {
+        return (2 * (2 * Math.sin(4 * x))) / (2 * Math.PI);
+      }
+      function scatterHeart(point, beta = 0.15) {
+        let ratio_x = -beta * Math.log(Math.random());
+        let ratio_y = -beta * Math.log(Math.random());
+
+        let dx = ratio_x * (point.x - width / 2);
+        let dy = ratio_y * (point.y - height / 2);
+
+        return new Point(point.x - dx, point.y - dy);
+      }
+      function shrinkHeart(point, ratio) {
+        let force =
+          -1 /
+          ((point.x - width / 2) ** 2 + (point.y - height / 2) ** 2) ** 0.6;
+        let dx = ratio * force * (point.x - width / 2);
+        let dy = ratio * force * (point.y - height / 2);
+        return new Point(point.x - dx, point.y - dy, 0);
+      }
+      class Point {
+        constructor(x, y, size) {
+          this.x = x;
+          this.y = y;
+          this.size = size;
+        }
+      }
+      class Heart {
+        constructor(particles, generateFrame) {
+          this.particles = particles;
+          this.generateFrame = generateFrame;
+          this.boardHeart = []; // 爱心的轮廓
+          this.middleHeart = []; // 爱心轮廓内部
+          this.centerHeart = []; // 爱心中间
+          this.allHearts = []; // 所有的爱心粒子
+          this.initHeart(); // 初始化爱心内部粒子
+
+          for (let i = 0; i < generateFrame; i++) {
+            this.calcFrame(i); // 计算 20 帧图像
+          }
+        }
+        initHeart() {
+          for (let i = 0; i < this.particles; i++) {
+            const deg = (2 * Math.PI * rand(0, 360)) / 360;
+            this.boardHeart.push(generatorHeart(deg));
+          }
+          this.boardHeart.forEach((point) => {
+            for (let j = 0; j < 3; j++) {
+              this.middleHeart.push(
+                scatterHeart(point, 0.05 * rand(j, j + 1, false))
+              );
+            }
+          });
+          for (let i = 0; i < this.particles * 2; i++) {
+            const ii = rand(0, this.boardHeart.length - 1);
+            this.centerHeart.push(scatterHeart(this.boardHeart[ii], 0.17));
+          }
+
+          for (let i = 0; i < this.particles / 4; i++) {
+            const ii = rand(0, this.boardHeart.length - 1);
+            this.centerHeart.push(scatterHeart(this.boardHeart[ii], 0.35));
+          }
+        }
+        calc_position(point, ratio) {
+          const force =
+            1 /
+            ((point.x - width / 2) ** 2 + (point.y - height / 2) ** 2) ** 0.52;
+
+          const dx = ratio * force * (point.x - width / 2) + rand(-1, 1, false);
+          const dy =
+            ratio * force * (point.y - height / 2) + rand(-1, 1, false);
+
+          return new Point(point.x - dx, point.y - dy, 0);
+        }
+
+        calcFrame(frame) {
+          const ratio = 20 * curve((frame / 18) * Math.PI);
+          const haloRadius = Math.floor(
+            4 + 6 * (1 + curve((frame / 18) * Math.PI))
+          );
+          const haloNums = Math.floor(
+            this.particles * 2 +
+              this.particles * 3 * Math.abs(curve((frame / 18) * Math.PI) ** 2)
+          );
+
+          const nowFramePoints = [];
+          const haloSet = new Set();
+          for (let i = 0; i < haloNums; i++) {
+            const delta = rand(0, 360);
+            let point = generatorHeart(2 * Math.PI * (delta / 360));
+            let shrinkPoint = shrinkHeart(point, haloRadius);
+            if (
+              !haloSet.has(
+                JSON.stringify([
+                  Math.floor(shrinkPoint.x),
+                  Math.floor(shrinkPoint.y),
+                ])
+              )
+            ) {
+              shrinkPoint.x += rand(-20, 20);
+              shrinkPoint.y += rand(-20, 20);
+              shrinkPoint.size = rand(0.4, 1.4, false);
+              nowFramePoints.push(shrinkPoint);
+              haloSet.add(
+                JSON.stringify([
+                  Math.floor(shrinkPoint.x),
+                  Math.floor(shrinkPoint.y),
+                ])
+              );
+            }
+          }
+
+          this.boardHeart.forEach((point) => {
+            const calcPoint = this.calc_position(point, ratio);
+            calcPoint.size = rand(0.6, 1.6, false);
+            nowFramePoints.push(calcPoint);
+          });
+          this.middleHeart.forEach((point) => {
+            const calcPoint = this.calc_position(point, ratio);
+            calcPoint.size = rand(0.4, 1.4, false);
+            nowFramePoints.push(calcPoint);
+          });
+          this.centerHeart.forEach((point) => {
+            const calcPoint = this.calc_position(point, ratio);
+            calcPoint.size = rand(0.4, 1.4, false);
+            nowFramePoints.push(calcPoint);
+          });
+
+          this.allHearts[frame] = nowFramePoints;
+        }
+      }
+
+      function drawHeart(context, points) {
+        points.forEach((point) => {
+          context.beginPath();
+          // #ed1c24
+          // #003EDB
+          // "#00A2E9"
+          context.fillStyle = "#00ffff";
+          context.arc(point.x, point.y, point.size, 0, Math.PI * 2);
+          context.fill();
+          context.closePath();
+        });
+      }
+
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const heartCanvas = document.getElementById("heart");
+      const heartCtx = heartCanvas.getContext("2d");
+      heartCanvas.width = width;
+      heartCanvas.height = height;
+      function render(k) {
+        heartCtx.clearRect(0, 0, width, height);
+        drawHeart(heartCtx, heartCls.allHearts[k]);
+      }
+      const heartCls = new Heart(2000, 20);
+
+      let k = 0;
+      (function animateloop() {
+        k++;
+        k = k % 80;
+        if (k % 4 === 0) {
+          render(k / 4);
+        }
+        requestAnimationFrame(animateloop);
+      })();
+    </script>
+  </body>
+</html>
